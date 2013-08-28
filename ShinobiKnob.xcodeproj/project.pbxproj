@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C00D0317CE971800669D05 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C00D0217CE971800669D05 /* SenTestingKit.framework */; };
+		22C00D0417CE971800669D05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740D17CE2E680078D069 /* UIKit.framework */; };
+		22C00D0517CE971800669D05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740F17CE2E680078D069 /* Foundation.framework */; };
+		22C00D0B17CE971800669D05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C00D0917CE971800669D05 /* InfoPlist.strings */; };
+		22C00D0E17CE971800669D05 /* ShinobiKnobTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C00D0D17CE971800669D05 /* ShinobiKnobTests.m */; };
+		22C00D1517CEA2C100669D05 /* SKKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F45B743217CE30860078D069 /* SKKnobControl.m */; };
 		F45B740E17CE2E680078D069 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740D17CE2E680078D069 /* UIKit.framework */; };
 		F45B741017CE2E680078D069 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740F17CE2E680078D069 /* Foundation.framework */; };
 		F45B741217CE2E680078D069 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B741117CE2E680078D069 /* CoreGraphics.framework */; };
@@ -21,7 +27,24 @@
 		F45B743317CE30860078D069 /* SKKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F45B743217CE30860078D069 /* SKKnobControl.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		22C00D1317CEA1CA00669D05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F45B740217CE2E680078D069 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F45B740917CE2E680078D069;
+			remoteInfo = ShinobiKnob;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShinobiKnobTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C00D0217CE971800669D05 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		22C00D0817CE971800669D05 /* ShinobiKnobTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShinobiKnobTests-Info.plist"; sourceTree = "<group>"; };
+		22C00D0A17CE971800669D05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22C00D0C17CE971800669D05 /* ShinobiKnobTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShinobiKnobTests.h; sourceTree = "<group>"; };
+		22C00D0D17CE971800669D05 /* ShinobiKnobTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShinobiKnobTests.m; sourceTree = "<group>"; };
+		22C00D0F17CE971800669D05 /* ShinobiKnobTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShinobiKnobTests-Prefix.pch"; sourceTree = "<group>"; };
 		F45B740A17CE2E680078D069 /* ShinobiKnob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShinobiKnob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45B740D17CE2E680078D069 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F45B740F17CE2E680078D069 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -43,6 +66,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		22C00CFD17CE971800669D05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C00D0317CE971800669D05 /* SenTestingKit.framework in Frameworks */,
+				22C00D0417CE971800669D05 /* UIKit.framework in Frameworks */,
+				22C00D0517CE971800669D05 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F45B740717CE2E680078D069 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,10 +89,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22C00D0617CE971800669D05 /* ShinobiKnobTests */ = {
+			isa = PBXGroup;
+			children = (
+				22C00D0C17CE971800669D05 /* ShinobiKnobTests.h */,
+				22C00D0D17CE971800669D05 /* ShinobiKnobTests.m */,
+				22C00D0717CE971800669D05 /* Supporting Files */,
+			);
+			path = ShinobiKnobTests;
+			sourceTree = "<group>";
+		};
+		22C00D0717CE971800669D05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22C00D0817CE971800669D05 /* ShinobiKnobTests-Info.plist */,
+				22C00D0917CE971800669D05 /* InfoPlist.strings */,
+				22C00D0F17CE971800669D05 /* ShinobiKnobTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F45B740117CE2E680078D069 = {
 			isa = PBXGroup;
 			children = (
 				F45B741317CE2E680078D069 /* ShinobiKnob */,
+				22C00D0617CE971800669D05 /* ShinobiKnobTests */,
 				F45B740C17CE2E680078D069 /* Frameworks */,
 				F45B740B17CE2E680078D069 /* Products */,
 			);
@@ -69,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F45B740A17CE2E680078D069 /* ShinobiKnob.app */,
+				22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +134,7 @@
 				F45B740D17CE2E680078D069 /* UIKit.framework */,
 				F45B740F17CE2E680078D069 /* Foundation.framework */,
 				F45B741117CE2E680078D069 /* CoreGraphics.framework */,
+				22C00D0217CE971800669D05 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,6 +179,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		22C00D0017CE971800669D05 /* ShinobiKnobTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22C00D1217CE971800669D05 /* Build configuration list for PBXNativeTarget "ShinobiKnobTests" */;
+			buildPhases = (
+				22C00CFC17CE971800669D05 /* Sources */,
+				22C00CFD17CE971800669D05 /* Frameworks */,
+				22C00CFE17CE971800669D05 /* Resources */,
+				22C00CFF17CE971800669D05 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22C00D1417CEA1CA00669D05 /* PBXTargetDependency */,
+			);
+			name = ShinobiKnobTests;
+			productName = ShinobiKnobTests;
+			productReference = 22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		F45B740917CE2E680078D069 /* ShinobiKnob */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F45B742D17CE2E680078D069 /* Build configuration list for PBXNativeTarget "ShinobiKnob" */;
@@ -163,11 +238,20 @@
 			projectRoot = "";
 			targets = (
 				F45B740917CE2E680078D069 /* ShinobiKnob */,
+				22C00D0017CE971800669D05 /* ShinobiKnobTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		22C00CFE17CE971800669D05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C00D0B17CE971800669D05 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F45B740817CE2E680078D069 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,7 +266,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22C00CFF17CE971800669D05 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		22C00CFC17CE971800669D05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C00D0E17CE971800669D05 /* ShinobiKnobTests.m in Sources */,
+				22C00D1517CEA2C100669D05 /* SKKnobControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F45B740617CE2E680078D069 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,7 +305,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		22C00D1417CEA1CA00669D05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F45B740917CE2E680078D069 /* ShinobiKnob */;
+			targetProxy = 22C00D1317CEA1CA00669D05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		22C00D0917CE971800669D05 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22C00D0A17CE971800669D05 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F45B741617CE2E680078D069 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,6 +341,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		22C00D1017CE971800669D05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShinobiKnobTests/ShinobiKnobTests-Prefix.pch";
+				INFOPLIST_FILE = "ShinobiKnobTests/ShinobiKnobTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		22C00D1117CE971800669D05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShinobiKnobTests/ShinobiKnobTests-Prefix.pch";
+				INFOPLIST_FILE = "ShinobiKnobTests/ShinobiKnobTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		F45B742B17CE2E680078D069 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -297,6 +452,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		22C00D1217CE971800669D05 /* Build configuration list for PBXNativeTarget "ShinobiKnobTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C00D1017CE971800669D05 /* Debug */,
+				22C00D1117CE971800669D05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F45B740517CE2E680078D069 /* Build configuration list for PBXProject "ShinobiKnob" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -313,6 +476,7 @@
 				F45B742F17CE2E680078D069 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

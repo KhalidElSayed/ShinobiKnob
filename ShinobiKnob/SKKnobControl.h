@@ -45,7 +45,7 @@
  The minimum value of the knob
  
  Changing this property will clip the current value if it is below the new
- minimum
+ minimum. Defaults to 0.
  */
 @property (nonatomic, assign) CGFloat mininumValue;
 
@@ -53,7 +53,7 @@
  The maximum value of the knob
  
  Changing this property will clip the current value if it is above the new
- maximum
+ maximum. Defaults to 1.
  */
 @property (nonatomic, assign) CGFloat maximumValue;
 
