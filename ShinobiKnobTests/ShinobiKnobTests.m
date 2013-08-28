@@ -32,9 +32,9 @@
 - (void)test_setValueAnimated_setsValueCorrectly
 {
     [_knobControl setValue:0.5 animated:YES];
-    XCTAssertEqual(_knobControl.value, 0.5, @"Value should be set correctly");
+    XCTAssertEqualWithAccuracy(_knobControl.value, 0.5, 1e-6, @"Value should be set correctly");
     [_knobControl setValue:0.75 animated:NO];
-    XCTAssertEqual(_knobControl.value, 0.75, @"Value should be set correctly");
+    XCTAssertEqualWithAccuracy(_knobControl.value, 0.75, 1e-6, @"Value should be set correctly");
 }
 
 - (void)test_valueShouldBeClippedToBounds
@@ -43,22 +43,26 @@
     _knobControl.mininumValue = -5;
     
     _knobControl.value = -10;
-    XCTAssertEqual(_knobControl.value, -5.f, @"Value should be clipped at the min value");
+    XCTAssertEqualWithAccuracy(_knobControl.value, -5.f, 1e-6, @"Value should be clipped at the min value");
     
     _knobControl.value = 10;
-    XCTAssertEqual(_knobControl.value, 5.f, @"Value should be clipped at the max value");
+    XCTAssertEqualWithAccuracy(_knobControl.value, 5.f, 1e-6, @"Value should be clipped at the max value");
 }
 
 - (void)test_valueShouldBeClippedWhenNewExtremaProvided
 {
+    // Need to set the initial maximum
+    _knobControl.maximumValue = 100;
+    // Now let's set the value
     _knobControl.value = 10;
     
+    // And change the max value
     _knobControl.maximumValue = 5;
-    XCTAssertEqual(_knobControl.value, 5.f, @"New max should clip the value");
+    XCTAssertEqualWithAccuracy(_knobControl.value, 5.f, 1e-6, @"New max should clip the value");
     
     _knobControl.value = 0;
     _knobControl.mininumValue = 2;
-    XCTAssertEqual(_knobControl.value, 2.f, @"New min should clip the value");
+    XCTAssertEqualWithAccuracy(_knobControl.value, 2.f, 1e-6, @"New min should clip the value");
 }
 
 
