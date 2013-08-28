@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22C00D0317CE971800669D05 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C00D0217CE971800669D05 /* SenTestingKit.framework */; };
 		22C00D0417CE971800669D05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740D17CE2E680078D069 /* UIKit.framework */; };
 		22C00D0517CE971800669D05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740F17CE2E680078D069 /* Foundation.framework */; };
 		22C00D0B17CE971800669D05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C00D0917CE971800669D05 /* InfoPlist.strings */; };
@@ -38,8 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShinobiKnobTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22C00D0217CE971800669D05 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		22C00D0117CE971800669D05 /* ShinobiKnobTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShinobiKnobTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C00D0817CE971800669D05 /* ShinobiKnobTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShinobiKnobTests-Info.plist"; sourceTree = "<group>"; };
 		22C00D0A17CE971800669D05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22C00D0C17CE971800669D05 /* ShinobiKnobTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShinobiKnobTests.h; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C00D0317CE971800669D05 /* SenTestingKit.framework in Frameworks */,
 				22C00D0417CE971800669D05 /* UIKit.framework in Frameworks */,
 				22C00D0517CE971800669D05 /* Foundation.framework in Frameworks */,
 			);
@@ -123,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F45B740A17CE2E680078D069 /* ShinobiKnob.app */,
-				22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */,
+				22C00D0117CE971800669D05 /* ShinobiKnobTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +131,6 @@
 				F45B740D17CE2E680078D069 /* UIKit.framework */,
 				F45B740F17CE2E680078D069 /* Foundation.framework */,
 				F45B741117CE2E680078D069 /* CoreGraphics.framework */,
-				22C00D0217CE971800669D05 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,8 +191,8 @@
 			);
 			name = ShinobiKnobTests;
 			productName = ShinobiKnobTests;
-			productReference = 22C00D0117CE971800669D05 /* ShinobiKnobTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 22C00D0117CE971800669D05 /* ShinobiKnobTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F45B740917CE2E680078D069 /* ShinobiKnob */ = {
 			isa = PBXNativeTarget;
@@ -352,7 +348,6 @@
 				GCC_PREFIX_HEADER = "ShinobiKnobTests/ShinobiKnobTests-Prefix.pch";
 				INFOPLIST_FILE = "ShinobiKnobTests/ShinobiKnobTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -367,7 +362,6 @@
 				GCC_PREFIX_HEADER = "ShinobiKnobTests/ShinobiKnobTests-Prefix.pch";
 				INFOPLIST_FILE = "ShinobiKnobTests/ShinobiKnobTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -459,6 +453,7 @@
 				22C00D1117CE971800669D05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F45B740517CE2E680078D069 /* Build configuration list for PBXProject "ShinobiKnob" */ = {
 			isa = XCConfigurationList;
