@@ -57,7 +57,7 @@
     CGFloat angleRange = self.endAngle - self.startAngle;
     CGFloat valueRange = self.maximumValue - self.mininumValue;
     CGFloat angleForValue = (value - self.mininumValue) / valueRange * angleRange + self.startAngle;
-    _annulusRenderer.pointerAngle = angleForValue;
+    [_annulusRenderer setPointerAngle:angleForValue animated:animated];
 }
 
 - (void)setValue:(CGFloat)value

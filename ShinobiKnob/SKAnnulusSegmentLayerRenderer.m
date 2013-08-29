@@ -104,9 +104,22 @@
 
 - (void)setPointerAngle:(CGFloat)pointerAngle
 {
+    [self setPointerAngle:pointerAngle animated:NO];
+}
+
+- (void)setPointerAngle:(CGFloat)pointerAngle animated:(BOOL)animated
+{
     if(pointerAngle != _pointerAngle) {
         _pointerAngle = pointerAngle;
+        
+        [CATransaction begin];
+        if(animated) {
+            [CATransaction setAnimationDuration:3.f];
+        } else {
+            [CATransaction setDisableActions:YES];
+        }
         self.pointerLayer.transform = CATransform3DMakeRotation(pointerAngle, 0, 0, 1);
+        [CATransaction commit];
     }
 }
 

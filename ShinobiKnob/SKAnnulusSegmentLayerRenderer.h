@@ -25,6 +25,9 @@
 @property (nonatomic, assign) CGFloat pointerLength;
 
 
+#pragma mark - Animation Control Updates
+- (void)setPointerAngle:(CGFloat)pointerAngle animated:(BOOL)animated;
+
 - (void)updateWithBounds:(CGRect)bounds;
 
 @end

@@ -18,8 +18,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _knobControl = [[SKKnobControl alloc] initWithFrame:CGRectMake(50, 50, 100, 100)];
+    [self performSelector:@selector(changeValue) withObject:nil afterDelay:1];
     [self.view addSubview:_knobControl];
     
+    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(50, 200, 200, 20)];
+    [self.view addSubview:slider];
+}
+
+- (void)changeValue
+{
+    [_knobControl setValue:0.5 animated:YES];
 }
 
 @end
