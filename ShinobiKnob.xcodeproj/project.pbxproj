@@ -12,6 +12,9 @@
 		22C00D0B17CE971800669D05 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C00D0917CE971800669D05 /* InfoPlist.strings */; };
 		22C00D0E17CE971800669D05 /* ShinobiKnobTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C00D0D17CE971800669D05 /* ShinobiKnobTests.m */; };
 		22C00D1517CEA2C100669D05 /* SKKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F45B743217CE30860078D069 /* SKKnobControl.m */; };
+		F400DAF717CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F400DAF617CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m */; };
+		F400DAF817CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F400DAF617CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m */; };
+		F400DAFA17CF397C00AB1056 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F400DAF917CF397C00AB1056 /* QuartzCore.framework */; };
 		F45B740E17CE2E680078D069 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740D17CE2E680078D069 /* UIKit.framework */; };
 		F45B741017CE2E680078D069 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B740F17CE2E680078D069 /* Foundation.framework */; };
 		F45B741217CE2E680078D069 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45B741117CE2E680078D069 /* CoreGraphics.framework */; };
@@ -43,6 +46,9 @@
 		22C00D0C17CE971800669D05 /* ShinobiKnobTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShinobiKnobTests.h; sourceTree = "<group>"; };
 		22C00D0D17CE971800669D05 /* ShinobiKnobTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShinobiKnobTests.m; sourceTree = "<group>"; };
 		22C00D0F17CE971800669D05 /* ShinobiKnobTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShinobiKnobTests-Prefix.pch"; sourceTree = "<group>"; };
+		F400DAF517CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAnnulusSegmentLayerRenderer.h; sourceTree = "<group>"; };
+		F400DAF617CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAnnulusSegmentLayerRenderer.m; sourceTree = "<group>"; };
+		F400DAF917CF397C00AB1056 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F45B740A17CE2E680078D069 /* ShinobiKnob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShinobiKnob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45B740D17CE2E680078D069 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F45B740F17CE2E680078D069 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F400DAFA17CF397C00AB1056 /* QuartzCore.framework in Frameworks */,
 				F45B740E17CE2E680078D069 /* UIKit.framework in Frameworks */,
 				F45B741017CE2E680078D069 /* Foundation.framework in Frameworks */,
 				F45B741217CE2E680078D069 /* CoreGraphics.framework in Frameworks */,
@@ -128,6 +135,7 @@
 		F45B740C17CE2E680078D069 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F400DAF917CF397C00AB1056 /* QuartzCore.framework */,
 				F45B740D17CE2E680078D069 /* UIKit.framework */,
 				F45B740F17CE2E680078D069 /* Foundation.framework */,
 				F45B741117CE2E680078D069 /* CoreGraphics.framework */,
@@ -168,6 +176,8 @@
 			children = (
 				F45B743117CE30860078D069 /* SKKnobControl.h */,
 				F45B743217CE30860078D069 /* SKKnobControl.m */,
+				F400DAF517CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.h */,
+				F400DAF617CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m */,
 			);
 			name = KnobControl;
 			sourceTree = "<group>";
@@ -285,6 +295,7 @@
 			files = (
 				22C00D0E17CE971800669D05 /* ShinobiKnobTests.m in Sources */,
 				22C00D1517CEA2C100669D05 /* SKKnobControl.m in Sources */,
+				F400DAF817CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F45B741A17CE2E680078D069 /* main.m in Sources */,
+				F400DAF717CF303000AB1056 /* SKAnnulusSegmentLayerRenderer.m in Sources */,
 				F45B741E17CE2E680078D069 /* SKAppDelegate.m in Sources */,
 				F45B742A17CE2E680078D069 /* SKViewController.m in Sources */,
 				F45B743317CE30860078D069 /* SKKnobControl.m in Sources */,
@@ -427,6 +439,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShinobiKnob/ShinobiKnob-Prefix.pch";
 				INFOPLIST_FILE = "ShinobiKnob/ShinobiKnob-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -438,6 +451,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShinobiKnob/ShinobiKnob-Prefix.pch";
 				INFOPLIST_FILE = "ShinobiKnob/ShinobiKnob-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

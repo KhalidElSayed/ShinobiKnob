@@ -7,23 +7,18 @@
 //
 
 #import "SKViewController.h"
+#import "SKKnobControl.h"
 
-@interface SKViewController ()
-
-@end
-
-@implementation SKViewController
+@implementation SKViewController {
+    SKKnobControl *_knobControl;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _knobControl = [[SKKnobControl alloc] initWithFrame:CGRectMake(50, 50, 100, 100)];
+    [self.view addSubview:_knobControl];
 }
 
 @end
