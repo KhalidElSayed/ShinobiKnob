@@ -11,11 +11,19 @@
 
 @interface SKAnnulusSegmentLayerRenderer : NSObject
 
+#pragma mark - Properties associated with the background annulus
+@property (nonatomic, readonly, strong) CALayer *annulusLayer;
 @property (nonatomic, strong) UIColor *annulusColor;
 @property (nonatomic, assign) CGFloat annulusLineWidth;
-@property (nonatomic, readonly, strong) CALayer *annulusLayer;
 @property (nonatomic, assign) CGFloat startAngle;
 @property (nonatomic, assign) CGFloat endAngle;
+
+#pragma mark - Properties associated with the pointer element
+@property (nonatomic, readonly, strong) CALayer *pointerLayer;
+@property (nonatomic, strong) UIColor *pointerColor;
+@property (nonatomic, assign) CGFloat pointerAngle;
+@property (nonatomic, assign) CGFloat pointerLength;
+
 
 - (void)updateWithBounds:(CGRect)bounds;
 

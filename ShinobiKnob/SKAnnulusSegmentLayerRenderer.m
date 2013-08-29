@@ -18,6 +18,10 @@
         self.annulusLayer.delegate = self;
         // Adapt for retina scale
         self.annulusLayer.contentsScale = [UIScreen mainScreen].scale;
+        
+        _pointerLayer = [CALayer layer];
+        self.pointerLayer.delegate = self;
+        self.pointerLayer.contentsScale = [UIScreen mainScreen].scale;
     }
     return self;
 }
@@ -27,6 +31,10 @@
     _annulusLayer.bounds = bounds;
     _annulusLayer.position = CGPointMake(CGRectGetWidth(bounds)/2.f, CGRectGetHeight(bounds)/2.f);
     [_annulusLayer setNeedsDisplay];
+    
+    _pointerLayer.bounds = bounds;
+    _pointerLayer.position = _annulusLayer.position;
+    [_pointerLayer setNeedsDisplay];
 }
 
 #pragma mark - CALayer Delegate method
@@ -34,6 +42,8 @@
 {
     if(layer == self.annulusLayer) {
         [self drawAnnulusSegmentInContext:ctx];
+    } else if (layer == self.pointerLayer) {
+        [self drawPointerLayerInContext:ctx];
     }
 }
 
@@ -55,6 +65,7 @@
     if(annulusLineWidth != _annulusLineWidth) {
         _annulusLineWidth = annulusLineWidth;
         [self.annulusLayer setNeedsDisplay];
+        [self.pointerLayer setNeedsDisplay];
     }
 }
 
@@ -74,6 +85,31 @@
     }
 }
 
+- (void)setPointerColor:(UIColor *)pointerColor
+{
+    if (pointerColor != _pointerColor) {
+        _pointerColor = pointerColor;
+        [self.pointerLayer setNeedsDisplay];
+    }
+}
+
+- (void)setPointerLength:(CGFloat)pointerLength
+{
+    if(pointerLength != _pointerLength) {
+        _pointerLength = pointerLength;
+        [self.pointerLayer setNeedsDisplay];
+        [self.annulusLayer setNeedsDisplay];
+    }
+}
+
+- (void)setPointerAngle:(CGFloat)pointerAngle
+{
+    if(pointerAngle != _pointerAngle) {
+        _pointerAngle = pointerAngle;
+        self.pointerLayer.transform = CATransform3DMakeRotation(pointerAngle, 0, 0, 1);
+    }
+}
+
 #pragma mark - Drawing Code
 - (void)drawAnnulusSegmentInContext:(CGContextRef)layerContext
 {
@@ -81,9 +117,10 @@
     {
         CGPoint center = CGPointMake(CGRectGetWidth(self.annulusLayer.bounds)/2,
                                      CGRectGetHeight(self.annulusLayer.bounds)/2);
+        CGFloat offset = MAX(self.pointerLength, self.annulusLineWidth / 2.f);
         CGFloat radius = MIN(CGRectGetHeight(self.annulusLayer.bounds),
                              CGRectGetWidth(self.annulusLayer.bounds)) / 2
-                         - self.annulusLineWidth / 2.f;
+                         - offset;
         UIBezierPath *ring = [UIBezierPath bezierPathWithArcCenter:center
                                                             radius:radius
                                                         startAngle:self.startAngle
@@ -99,6 +136,29 @@
         CGContextStrokePath(layerContext);
         CGContextRestoreGState(layerContext);
     }
+    CGContextRestoreGState(layerContext);
+}
+
+- (void)drawPointerLayerInContext:(CGContextRef)layerContext
+{
+    CGContextSaveGState(layerContext);
+    {
+        UIBezierPath *pointer = [UIBezierPath bezierPath];
+        [pointer moveToPoint:CGPointMake(CGRectGetWidth(self.pointerLayer.bounds) - self.pointerLength - self.annulusLineWidth/2.f,
+                                         CGRectGetHeight(self.pointerLayer.bounds) / 2.f)];
+        [pointer addLineToPoint:CGPointMake(CGRectGetWidth(self.pointerLayer.bounds),
+                                            CGRectGetHeight(self.pointerLayer.bounds) / 2.f)];
+        
+        // Let's stroke it
+        CGContextSaveGState(layerContext);
+        CGContextSetShouldAntialias(layerContext, YES);
+        CGContextSetStrokeColorWithColor(layerContext, self.pointerColor.CGColor);
+        CGContextAddPath(layerContext, pointer.CGPath);
+        CGContextSetLineWidth(layerContext, self.annulusLineWidth);
+        CGContextStrokePath(layerContext);
+        CGContextRestoreGState(layerContext);
+    }
+    CGContextRestoreGState(layerContext);
 }
 
 @end

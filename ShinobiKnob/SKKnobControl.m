@@ -16,6 +16,7 @@
 @dynamic lineWidth;
 @dynamic startAngle;
 @dynamic endAngle;
+@dynamic pointerLength;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,12 +29,15 @@
         self.startAngle = - M_PI * 11 / 8.f;
         self.endAngle   = M_PI * 3 / 8.f;
         self.lineWidth  = 2.f;
+        self.pointerLength = 6.f;
+        _annulusRenderer.pointerAngle = self.startAngle;
         _annulusRenderer.annulusColor = self.tintColor;
+        _annulusRenderer.pointerColor = self.tintColor;
         
         // Setup defaults
-        _value = 0.0;
         _mininumValue = 0.0;
         _maximumValue = 1.0;
+        self.value = 0.0;
         
         // Create the
         [self createKnobImage];
@@ -49,6 +53,11 @@
     // Save the value to the backing ivar
     // Make sure we limit it to the requested bounds
     _value = [self clipToBounds:value];
+    // Now let's update the knob with the correct angle
+    CGFloat angleRange = self.endAngle - self.startAngle;
+    CGFloat valueRange = self.maximumValue - self.mininumValue;
+    CGFloat angleForValue = (value - self.mininumValue) / valueRange * angleRange + self.startAngle;
+    _annulusRenderer.pointerAngle = angleForValue;
 }
 
 - (void)setValue:(CGFloat)value
@@ -106,6 +115,16 @@
     _annulusRenderer.endAngle = endAngle;
 }
 
+- (CGFloat)pointerLength
+{
+    return _annulusRenderer.pointerLength;
+}
+
+- (void)setPointerLength:(CGFloat)pointerLength
+{
+    _annulusRenderer.pointerLength = pointerLength;
+}
+
 #pragma mark - Layout methods
 - (void)createKnobImage
 {
@@ -117,6 +136,11 @@
         [_annulusRenderer.annulusLayer removeFromSuperlayer];
     }
     [self.layer addSublayer:_annulusRenderer.annulusLayer];
+    
+    if(_annulusRenderer.pointerLayer.superlayer) {
+        [_annulusRenderer.pointerLayer removeFromSuperlayer];
+    }
+    [self.layer addSublayer:_annulusRenderer.pointerLayer];
 }
 
 - (void)tintColorDidChange
@@ -124,6 +148,7 @@
     [super tintColorDidChange];
     // Need to update the annulus color
     _annulusRenderer.annulusColor = self.tintColor;
+    _annulusRenderer.pointerColor = self.tintColor;
 }
 
 - (void)layoutSubviews

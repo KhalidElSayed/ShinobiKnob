@@ -101,4 +101,11 @@
  */
 @property (nonatomic, assign) CGFloat lineWidth;
 
+/**
+ Specifies the length in points of the pointer on the knob
+ 
+ Defaults to 6.0
+ */
+@property (nonatomic, assign) CGFloat pointerLength;
+
 @end

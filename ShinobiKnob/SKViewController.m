@@ -19,6 +19,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     _knobControl = [[SKKnobControl alloc] initWithFrame:CGRectMake(50, 50, 100, 100)];
     [self.view addSubview:_knobControl];
+    
 }
 
 @end
