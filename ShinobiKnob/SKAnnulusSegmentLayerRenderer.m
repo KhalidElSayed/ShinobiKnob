@@ -123,6 +123,34 @@
     }
 }
 
+- (BOOL)pointerHitTest:(CGPoint)touchPoint
+{
+    CGPoint pointerLocation = [self positionOfCurrentValue];
+    // Let's make a box around it
+    CGRect boundingBox = CGRectMake(pointerLocation.x - 22, pointerLocation.y - 22,
+                                    44, 44);
+    return CGRectContainsPoint(boundingBox, touchPoint);
+}
+
+- (CGPoint)positionOfCurrentValue
+{
+    CGFloat radius = MIN(CGRectGetHeight(self.annulusLayer.bounds),
+                         CGRectGetWidth(self.annulusLayer.bounds)) / 2;
+    CGPoint pointerLocation = CGPointMake(radius + radius * cos(self.pointerAngle),
+                                          radius + radius * sin(self.pointerAngle));
+    return pointerLocation;
+}
+
+- (CGPoint)tangentVectorOfCurrentValue
+{
+    CGFloat radius = MIN(CGRectGetHeight(self.annulusLayer.bounds),
+                         CGRectGetWidth(self.annulusLayer.bounds)) / 2;
+    CGPoint currentPosition = [self positionOfCurrentValue];
+    CGPoint offsetPosition = CGPointMake(currentPosition.x - radius, currentPosition.y - radius);
+    
+    return CGPointMake(-offsetPosition.y / radius, offsetPosition.x / radius);
+}
+
 #pragma mark - Drawing Code
 - (void)drawAnnulusSegmentInContext:(CGContextRef)layerContext
 {

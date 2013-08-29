@@ -9,9 +9,14 @@
 #import "SKKnobControl.h"
 #import "SKAnnulusSegmentLayerRenderer.h"
 
-@implementation SKKnobControl {
+@interface SKKnobControl () <UIGestureRecognizerDelegate> {
     SKAnnulusSegmentLayerRenderer *_annulusRenderer;
+    UIPanGestureRecognizer *_gestureRecognizer;
+    CGPoint lastTouchPoint;
 }
+@end
+
+@implementation SKKnobControl
 
 @dynamic lineWidth;
 @dynamic startAngle;
@@ -39,8 +44,13 @@
         _maximumValue = 1.0;
         self.value = 0.0;
         
-        // Create the
+        // Create the UI
         [self createKnobImage];
+        
+        // Create the gesture recognizer
+        _gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(knobDidPan:)];
+        _gestureRecognizer.delegate = self;
+        [self addGestureRecognizer:_gestureRecognizer];
     }
     return self;
 }
@@ -159,6 +169,37 @@
     if(!CGSizeEqualToSize(_annulusRenderer.annulusLayer.bounds.size, self.bounds.size)) {
         [_annulusRenderer updateWithBounds:self.bounds];
     }
+}
+
+#pragma mark - Handle gestures
+- (void)knobDidPan:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    if(gestureRecognizer == _gestureRecognizer) {
+        if(_gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+            lastTouchPoint = [_gestureRecognizer locationInView:self];
+        } else {
+            CGPoint currentTouchPoint = [_gestureRecognizer locationInView:self];
+            CGPoint radialToCurrent = CGPointMake(currentTouchPoint.x - CGRectGetWidth(self.bounds)/2,
+                                                  currentTouchPoint.y - CGRectGetHeight(self.bounds)/2);
+            CGPoint radialToPrevious = CGPointMake(lastTouchPoint.x - CGRectGetWidth(self.bounds)/2,
+                                                  lastTouchPoint.y - CGRectGetHeight(self.bounds)/2);
+            // What's the dot product
+            CGFloat dp = radialToCurrent.x * radialToCurrent.x + radialToPrevious.y * radialToPrevious.y;
+            dp /= sqrt(radialToCurrent.x * radialToCurrent.x + radialToCurrent.y * radialToCurrent.y);
+            dp /= sqrt(radialToPrevious.x * radialToPrevious.x + radialToPrevious.y * radialToPrevious.y);
+            CGFloat changeInAngle = acos(dp);
+            NSLog(@"%f", changeInAngle);
+            CGFloat changeInValue = changeInAngle / (self.endAngle - self.startAngle) * (self.maximumValue - self.mininumValue);
+            self.value += changeInValue;
+            lastTouchPoint = currentTouchPoint;
+        }
+    }
+}
+
+#pragma mark - UIGestureRecognizerDelegate methods
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return [_annulusRenderer pointerHitTest:[touch locationInView:self]];
 }
 
 

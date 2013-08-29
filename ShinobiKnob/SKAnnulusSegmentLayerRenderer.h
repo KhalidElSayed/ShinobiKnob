@@ -30,4 +30,8 @@
 
 - (void)updateWithBounds:(CGRect)bounds;
 
+- (CGPoint)positionOfCurrentValue;
+- (CGPoint)tangentVectorOfCurrentValue;
+- (BOOL)pointerHitTest:(CGPoint)touchPoint;
+
 @end
