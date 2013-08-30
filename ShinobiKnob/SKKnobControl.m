@@ -61,14 +61,19 @@
 #pragma mark - API Methods
 - (void)setValue:(CGFloat)value animated:(BOOL)animated
 {
-    // Save the value to the backing ivar
-    // Make sure we limit it to the requested bounds
-    _value = [self clipToBounds:value];
-    // Now let's update the knob with the correct angle
-    CGFloat angleRange = self.endAngle - self.startAngle;
-    CGFloat valueRange = self.maximumValue - self.mininumValue;
-    CGFloat angleForValue = (value - self.mininumValue) / valueRange * angleRange + self.startAngle;
-    [_annulusRenderer setPointerAngle:angleForValue animated:animated];
+    if(value != _value) {
+        // Send KVO notification
+        [self willChangeValueForKey:@"value"];
+        // Save the value to the backing ivar
+        // Make sure we limit it to the requested bounds
+        _value = [self clipToBounds:value];
+        // Now let's update the knob with the correct angle
+        CGFloat angleRange = self.endAngle - self.startAngle;
+        CGFloat valueRange = self.maximumValue - self.mininumValue;
+        CGFloat angleForValue = (value - self.mininumValue) / valueRange * angleRange + self.startAngle;
+        [_annulusRenderer setPointerAngle:angleForValue animated:animated];
+        [self didChangeValueForKey:@"value"];
+    }
 }
 
 - (void)setValue:(CGFloat)value
@@ -226,5 +231,16 @@
     return value;
 }
 
+#pragma mark - Advanced KVO
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key
+{
+    // We'll handle KVO notifications for the value property ourselves, since
+    // we're proxying with the setValue:animated: method.
+    if ([key isEqualToString:@"value"]) {
+        return NO;
+    } else {
+        return [super automaticallyNotifiesObserversForKey:key];
+    }
+}
 
 @end
