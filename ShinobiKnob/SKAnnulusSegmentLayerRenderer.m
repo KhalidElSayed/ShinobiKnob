@@ -141,16 +141,6 @@
     return pointerLocation;
 }
 
-- (CGPoint)tangentVectorOfCurrentValue
-{
-    CGFloat radius = MIN(CGRectGetHeight(self.annulusLayer.bounds),
-                         CGRectGetWidth(self.annulusLayer.bounds)) / 2;
-    CGPoint currentPosition = [self positionOfCurrentValue];
-    CGPoint offsetPosition = CGPointMake(currentPosition.x - radius, currentPosition.y - radius);
-    
-    return CGPointMake(-offsetPosition.y / radius, offsetPosition.x / radius);
-}
-
 #pragma mark - Drawing Code
 - (void)drawAnnulusSegmentInContext:(CGContextRef)layerContext
 {

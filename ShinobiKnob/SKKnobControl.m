@@ -183,12 +183,14 @@
                                                   currentTouchPoint.y - CGRectGetHeight(self.bounds)/2);
             CGPoint radialToPrevious = CGPointMake(lastTouchPoint.x - CGRectGetWidth(self.bounds)/2,
                                                   lastTouchPoint.y - CGRectGetHeight(self.bounds)/2);
-            // What's the dot product
-            CGFloat dp = radialToCurrent.x * radialToCurrent.x + radialToPrevious.y * radialToPrevious.y;
-            dp /= sqrt(radialToCurrent.x * radialToCurrent.x + radialToCurrent.y * radialToCurrent.y);
-            dp /= sqrt(radialToPrevious.x * radialToPrevious.x + radialToPrevious.y * radialToPrevious.y);
-            CGFloat changeInAngle = acos(dp);
-            NSLog(@"%f", changeInAngle);
+            // What's the cross product? Only have a component in the z direction:
+            CGFloat cp_k = radialToCurrent.y * radialToPrevious.x - radialToCurrent.x * radialToPrevious.y;
+            // Normalise
+            cp_k /= sqrt(radialToCurrent.x * radialToCurrent.x + radialToCurrent.y * radialToCurrent.y);
+            cp_k /= sqrt(radialToPrevious.x * radialToPrevious.x + radialToPrevious.y * radialToPrevious.y);
+            CGFloat changeInAngle = asin(cp_k);
+            
+            // Convert to a change in value
             CGFloat changeInValue = changeInAngle / (self.endAngle - self.startAngle) * (self.maximumValue - self.mininumValue);
             self.value += changeInValue;
             lastTouchPoint = currentTouchPoint;
