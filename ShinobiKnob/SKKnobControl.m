@@ -42,6 +42,7 @@
         // Setup defaults
         _mininumValue = 0.0;
         _maximumValue = 1.0;
+        _continuous = YES;
         self.value = 0.0;
         
         // Create the UI
@@ -194,6 +195,17 @@
             CGFloat changeInValue = changeInAngle / (self.endAngle - self.startAngle) * (self.maximumValue - self.mininumValue);
             self.value += changeInValue;
             lastTouchPoint = currentTouchPoint;
+            
+            // Notify of value change
+            if (self.continuous) {
+                [self sendActionsForControlEvents:UIControlEventValueChanged];
+            } else {
+                // Only send an update if the gesture has completed
+                if(_gestureRecognizer.state == UIGestureRecognizerStateEnded
+                   || _gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
+                    [self sendActionsForControlEvents:UIControlEventValueChanged];
+                }
+            }
         }
     }
 }
