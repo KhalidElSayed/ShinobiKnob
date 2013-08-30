@@ -30,4 +30,6 @@
 
 - (void)updateWithBounds:(CGRect)bounds;
 
+- (BOOL)pointerHitTest:(CGPoint)touchPoint;
+
 @end

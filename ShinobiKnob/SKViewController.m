@@ -11,6 +11,7 @@
 
 @implementation SKViewController {
     SKKnobControl *_knobControl;
+    UISlider *_slider;
 }
 
 - (void)viewDidLoad
@@ -18,16 +19,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _knobControl = [[SKKnobControl alloc] initWithFrame:CGRectMake(50, 50, 100, 100)];
-    [self performSelector:@selector(changeValue) withObject:nil afterDelay:1];
+    [_knobControl addTarget:self action:@selector(knobValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_knobControl];
     
-    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(50, 200, 200, 20)];
-    [self.view addSubview:slider];
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(50, 200, 200, 20)];
+    [_slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:_slider];
 }
 
-- (void)changeValue
+- (void)knobValueChanged:(id)sender
 {
-    [_knobControl setValue:0.5 animated:YES];
+    // Update the slider value to match the knob
+    _slider.value = _knobControl.value;
+}
+
+- (void)sliderValueChanged:(id)sender
+{
+    // Update the knob to match the slider
+    _knobControl.value = _slider.value;
 }
 
 @end
