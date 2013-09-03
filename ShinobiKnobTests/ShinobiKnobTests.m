@@ -40,7 +40,7 @@
 - (void)test_valueShouldBeClippedToBounds
 {
     _knobControl.maximumValue = 5;
-    _knobControl.mininumValue = -5;
+    _knobControl.minimumValue = -5;
     
     _knobControl.value = -10;
     XCTAssertEqualWithAccuracy(_knobControl.value, -5.f, 1e-6, @"Value should be clipped at the min value");
@@ -61,7 +61,7 @@
     XCTAssertEqualWithAccuracy(_knobControl.value, 5.f, 1e-6, @"New max should clip the value");
     
     _knobControl.value = 0;
-    _knobControl.mininumValue = 2;
+    _knobControl.minimumValue = 2;
     XCTAssertEqualWithAccuracy(_knobControl.value, 2.f, 1e-6, @"New min should clip the value");
 }
 

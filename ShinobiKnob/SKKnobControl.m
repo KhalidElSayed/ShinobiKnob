@@ -40,7 +40,7 @@
         _annulusRenderer.pointerColor = self.tintColor;
         
         // Setup defaults
-        _mininumValue = 0.0;
+        _minimumValue = 0.0;
         _maximumValue = 1.0;
         _continuous = YES;
         self.value = 0.0;
@@ -69,8 +69,8 @@
         _value = [self clipToBounds:value];
         // Now let's update the knob with the correct angle
         CGFloat angleRange = self.endAngle - self.startAngle;
-        CGFloat valueRange = self.maximumValue - self.mininumValue;
-        CGFloat angleForValue = (value - self.mininumValue) / valueRange * angleRange + self.startAngle;
+        CGFloat valueRange = self.maximumValue - self.minimumValue;
+        CGFloat angleForValue = (value - self.minimumValue) / valueRange * angleRange + self.startAngle;
         [_annulusRenderer setPointerAngle:angleForValue animated:animated];
         [self didChangeValueForKey:@"value"];
     }
@@ -91,12 +91,12 @@
     }
 }
 
-- (void)setMininumValue:(CGFloat)mininumValue
+- (void)setMinimumValue:(CGFloat)mininumValue
 {
-    _mininumValue = mininumValue;
+    _minimumValue = mininumValue;
     // Need to check the bounds of the value
     if(self.value < mininumValue) {
-        self.value = self.mininumValue;
+        self.value = self.minimumValue;
     }
 }
 
@@ -197,7 +197,7 @@
             CGFloat changeInAngle = asin(cp_k);
             
             // Convert to a change in value
-            CGFloat changeInValue = changeInAngle / (self.endAngle - self.startAngle) * (self.maximumValue - self.mininumValue);
+            CGFloat changeInValue = changeInAngle / (self.endAngle - self.startAngle) * (self.maximumValue - self.minimumValue);
             self.value += changeInValue;
             lastTouchPoint = currentTouchPoint;
             
@@ -227,7 +227,7 @@
 - (CGFloat)clipToBounds:(CGFloat)value
 {
     value = MIN(value, self.maximumValue);
-    value = MAX(value, self.mininumValue);
+    value = MAX(value, self.minimumValue);
     return value;
 }
 
