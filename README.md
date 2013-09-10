@@ -14,7 +14,7 @@ Requires iOS7 and Xcode5.
 
 The slides for the presentation are available here:
 
-
+https://speakerdeck.com/sammyd/the-art-of-custom-ui-controls
 
 ## Me
 
