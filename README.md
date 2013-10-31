@@ -6,6 +6,9 @@ A simple knob control, used as a demonstration for "The Art of Custom UI Control
 Please fork it if you find it useful, or raise any issues that you have. I should spend some more time on it to improve it - if people ask for it then I shall :)
 
 
+![Screenshot](img/screenshot.png)
+
+
 ## Requirements
 
 Requires iOS7 and Xcode5.
