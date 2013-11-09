@@ -123,21 +123,16 @@
 #pragma mark - Utility methods
 - (BOOL)pointerHitTest:(CGPoint)touchPoint
 {
-    CGPoint pointerLocation = [self positionOfCurrentValue];
-    // Let's make a box around it
-    CGRect boundingBox = CGRectMake(pointerLocation.x - 22, pointerLocation.y - 22,
-                                    44, 44);
-    return CGRectContainsPoint(boundingBox, touchPoint);
+    // Get the bounding box of the pointer, in the annulus layer frame of reference
+    CGRect boundingBox = [_annulusLayer convertRect:CGPathGetBoundingBox(_pointerLayer.path)
+                                          fromLayer:_pointerLayer];
+    // What's the center-point
+    CGPoint bbCenter = CGPointMake(CGRectGetMidX(boundingBox), CGRectGetMidY(boundingBox));
+    CGRect touchBox = CGRectMake(bbCenter.x - 22, bbCenter.y - 22, 44, 44);
+    // Are we inside?
+    return CGRectContainsPoint(touchBox, touchPoint);
 }
 
-- (CGPoint)positionOfCurrentValue
-{
-    CGFloat radius = MIN(CGRectGetHeight(self.annulusLayer.bounds),
-                         CGRectGetWidth(self.annulusLayer.bounds)) / 2;
-    CGPoint pointerLocation = CGPointMake(radius + radius * cos(self.pointerAngle),
-                                          radius + radius * sin(self.pointerAngle));
-    return pointerLocation;
-}
 
 #pragma mark - Drawing Methods
 - (void)updateAnnulusSegmentShape
