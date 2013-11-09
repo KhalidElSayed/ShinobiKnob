@@ -76,6 +76,7 @@
     }
 }
 
+#pragma mark - Property overrides
 - (void)setValue:(CGFloat)value
 {
     // Chain with the animation method version
