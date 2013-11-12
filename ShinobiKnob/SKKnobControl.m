@@ -70,7 +70,7 @@
         // Now let's update the knob with the correct angle
         CGFloat angleRange = self.endAngle - self.startAngle;
         CGFloat valueRange = self.maximumValue - self.minimumValue;
-        CGFloat angleForValue = (value - self.minimumValue) / valueRange * angleRange + self.startAngle;
+        CGFloat angleForValue = (_value - self.minimumValue) / valueRange * angleRange + self.startAngle;
         [_annulusRenderer setPointerAngle:angleForValue animated:animated];
         [self didChangeValueForKey:@"value"];
     }
